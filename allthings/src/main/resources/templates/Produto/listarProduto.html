@@ -6,6 +6,36 @@
     <title>Listagem de Produtos</title>
 </head>
 <body>
-    
+    <h1 style="text-align: center;">Lista</h1>
+    <h3 style="text-align: center;">
+        <a href="/produtos/criar">Novo Produto</a>
+    </h3>
+
+    <!--Tabela para exibir os produtos cadastrados-->
+    <table align="center" border="1">
+        <tr>
+            <td colspan="7" style="text-align: center;">Lista de Produtos</td>
+        </tr>
+        <tr>
+            <th>Descrição</th>
+            <th>Unidade</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Valor</th>
+            <th colspan="2">Ações</th>
+        </tr>
+        <tr th:each="produto : ${produtos}">
+            <td th:text="${produto.descProduto}"></td>
+            <td th:text="${produto.unidadeProduto}"></td>
+            <td th:text="${produto.marcaProduto}"></td>
+            <td th:text="${produto.modeloProduto}"></td>
+            <td th:text="${produto.valorProduto}"></td>
+            
+            <td>
+                <a th:href="@{/produtos/editar/(id){id=${produto.idProduto}}}">Editar</a>
+                <a th:href="@{/produtos/excluir/(id){id=${produto.idProduto}}}">Excluir</a>
+            </td>
+        </tr>
+    </table>
 </body>
 </html>

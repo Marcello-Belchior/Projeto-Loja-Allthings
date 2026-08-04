@@ -28,6 +28,9 @@ public class Produto {
     @Column(nullable = false, length = 40)
     private String modeloProduto;
 
+    @Column(nullable = false, length = 40)
+    private String marcaProduto;
+
     @Column(nullable = false, length = 10)
     private String unidadeProduto;
 

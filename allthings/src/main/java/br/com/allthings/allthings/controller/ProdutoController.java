@@ -32,13 +32,13 @@ public class ProdutoController {
     public String listar(Model model) {
         List<Produto> produtos= produtoService.findAll();
         model.addAttribute("produtos", produtos);
-        return "aluno/listarProdutos"; 
+        return "Produto/listarProduto"; 
     }
 
     //  Método para criar formulário
     @GetMapping("/criar")
     public String criarForm(Model model){
         model.addAttribute("produto", new Produto());
-        return "produto/formularioProduto";
+        return "Produto/formularioProduto";
     }
 }
