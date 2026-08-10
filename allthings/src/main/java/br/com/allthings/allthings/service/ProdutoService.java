@@ -23,4 +23,14 @@ public class ProdutoService {
     public List<Produto> findAll(){
         return produtoRepository.findAll();
     }
+
+    //Método para excluir produto pelo ID
+    public void deleteById(Integer id){
+        produtoRepository.deleteById(id);
+    }
+
+    //Método para buscar o produto pelo Id
+    public Produto findById(Integer id){
+        return produtoRepository.findById(id).orElse(null);
+    }
 }
