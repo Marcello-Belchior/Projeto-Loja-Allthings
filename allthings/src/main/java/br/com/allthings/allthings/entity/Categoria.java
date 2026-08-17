@@ -14,15 +14,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Pedido {
-    
+public class Categoria {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer idPedido;
+    private Integer idCategoria;
 
     @Column(nullable = false, length = 40)
-    private String nomePedido;
-
-    @Column(nullable = false, length = 40)
-    private String descPedido;
+    private String nomeCategoria;
 }

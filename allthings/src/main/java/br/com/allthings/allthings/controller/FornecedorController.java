@@ -55,6 +55,8 @@ public class FornecedorController {
     public String editarForm(@PathVariable Integer id, Model model) {
     Fornecedor fornecedor = fornecedorService.findById(id);
     model.addAttribute("fornecedor", fornecedor);
+    List<Fornecedor> fornecedores = fornecedorService.findAll();
+    model.addAttribute("fornecedores", fornecedores);
     return "Fornecedor/formularioFornecedor";
 }
 }

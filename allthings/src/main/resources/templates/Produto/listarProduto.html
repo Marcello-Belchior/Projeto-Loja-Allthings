@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listagem de Produtos</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1 style="text-align: center;">Lista</h1>
@@ -22,6 +23,8 @@
             <th>Marca</th>
             <th>Modelo</th>
             <th>Valor</th>
+            <th>Fornecedor</th>
+            <th>Categoria</th>
             <th colspan="2">Ações</th>
         </tr>
         <tr th:each="produto : ${produtos}">
@@ -30,6 +33,8 @@
             <td th:text="${produto.marcaProduto}"></td>
             <td th:text="${produto.modeloProduto}"></td>
             <td th:text="${produto.valorProduto}"></td>
+            <td th:text="${produto.fornecedor.nomeFornecedor}"></td>
+            <td th:text="${produto.categoria.nomeCategoria}"></td>
             
             <td>
                 <a th:href="@{/produtos/editar/{id}(id=${produto.idProduto})}">
@@ -42,5 +47,6 @@
             </td>
         </tr>
     </table>
+    <btn><a href="/allthings">Voltar</a></btn>
 </body>
 </html>

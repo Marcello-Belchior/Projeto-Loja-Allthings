@@ -47,6 +47,21 @@
             name="valorProduto"
             th:field="*{valorProduto}">
         <br /><br />
+        <label for="idFornecedor">Fornecedor:</label>
+        <select th:field="*{fornecedor}">
+        <option value="" disabled selected>Selecione o fornecedor</option>
+        <option th:each="fornecedor : ${fornecedores}"
+                th:text="${fornecedor.nomeFornecedor}"
+                th:value="${fornecedor.idFornecedor}"></option>
+        </select>
+        <label for="idCategoria">Categoria:</label>
+        <select th:field="*{categoria}">
+        <option value="" disabled selected>Selecione a Categoria</option>
+        <option th:each="categoria : ${categorias}"
+                th:text="${categoria.nomeCategoria}"
+                th:value="${categoria.idCategoria}"></option>
+        </select>
+        <br /><br />
         <button type="submit">Salvar Produto</button>
         
     </form>
