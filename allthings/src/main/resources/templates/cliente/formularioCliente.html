@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fomulário de Clientes</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Cadastro de Clientes</h1>
+    <form th:action="@{/clientes/salvar}"
+      th:object="${cliente}"
+      method="post">
+
+    <input type="hidden" th:field="*{idCliente}">
+
+    <label for="nomeCliente">Nome:</label>
+    <input 
+        type="text"
+        id="nomeCliente"
+        th:field="*{nomeCliente}"
+        required>
+    <br /><br />
+
+    <label for="enderecoCliente">Endereço:</label>
+    <input 
+        type="text"
+        id="enderecoCliente"
+        th:field="*{enderecoCliente}"
+        required>
+    <br /><br />
+
+    <label for="cidadeCliente">Cidade:</label>
+    <input 
+        type="text"
+        id="cidadeCliente"
+        th:field="*{cidadeCliente}"
+        required>
+    <br /><br />
+
+    <label for="estadoCliente">Estado:</label>
+    <input 
+        type="text"
+        id="estadoCliente"
+        th:field="*{estadoCliente}"
+        required>
+    <br /><br />
+
+    <label for="cepCliente">CEP:</label>
+    <input 
+        type="text"
+        id="cepCliente"
+        th:field="*{cepCliente}"
+        required>
+    <br /><br />
+
+    <label for="cpfCliente">CPF:</label>
+    <input 
+        type="text"
+        id="cpfCliente"
+        th:field="*{cpfCliente}"
+        required>
+    <br /><br />
+
+    <label for="rgCliente">RG:</label>
+    <input 
+        type="text"
+        id="rgCliente"
+        th:field="*{rgCliente}"
+        required>
+    <br /><br />
+
+    <button type="submit">Salvar Cliente</button>
+
+</form>
+</body>
+</html>
