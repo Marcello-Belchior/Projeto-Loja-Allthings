@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<aside class="sidebar" th:fragment="sidebar(activePage)">
+    <div class="sidebar-brand">
+        <span class="brand-mark">AT</span>
+        <span class="brand-name">All Things</span>
+    </div>
+
+    <nav class="sidebar-nav">
+        <a th:href="@{/allthings}"
+           th:classappend="${activePage == 'dashboard'} ? 'active'"
+           class="nav-item">
+            <span class="nav-icon">&#9679;</span> Dashboard
+        </a>
+        <a th:href="@{/produtos/listar}"
+           th:classappend="${activePage == 'produtos'} ? 'active'"
+           class="nav-item">
+            <span class="nav-icon">&#9679;</span> Produtos
+        </a>
+        <a th:href="@{/categorias/listar}"
+           th:classappend="${activePage == 'categorias'} ? 'active'"
+           class="nav-item">
+            <span class="nav-icon">&#9679;</span> Categorias
+        </a>
+        <a th:href="@{/fornecedores/listar}"
+           th:classappend="${activePage == 'fornecedores'} ? 'active'"
+           class="nav-item">
+            <span class="nav-icon">&#9679;</span> Fornecedores
+        </a>
+        <a th:href="@{/clientes/listar}"
+           th:classappend="${activePage == 'clientes'} ? 'active'"
+           class="nav-item">
+            <span class="nav-icon">&#9679;</span> Clientes
+        </a>
+    </nav>
+
+    <div class="sidebar-footer">
+        <span>Sistema All Things</span>
+    </div>
+</aside>
+
+</body>
+</html>

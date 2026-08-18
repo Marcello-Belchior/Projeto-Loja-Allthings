@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem de Produtos</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+    <div class="app-layout">
+        <div th:replace="~{fragments/sidebar :: sidebar(activePage='produtos')}"></div>
+
+        <main class="content">
+            <div class="page-header">
+                <div>
+                    <h1>Produtos</h1>
+                    <p class="page-subtitle">Lista de produtos cadastrados</p>
+                </div>
+                <a class="btn btn-primary" href="/produtos/criar">+ Novo Produto</a>
+            </div>
+
+            <div class="card">
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Descrição</th>
+                                <th>Unidade</th>
+                                <th>Marca</th>
+                                <th>Modelo</th>
+                                <th>Valor</th>
+                                <th>Fornecedor</th>
+                                <th>Categoria</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="produto : ${produtos}">
+                                <td th:text="${produto.descProduto}"></td>
+                                <td th:text="${produto.unidadeProduto}"></td>
+                                <td th:text="${produto.marcaProduto}"></td>
+                                <td th:text="${produto.modeloProduto}"></td>
+                                <td th:text="${produto.valorProduto}"></td>
+                                <td th:text="${produto.fornecedor.nomeFornecedor}"></td>
+                                <td th:text="${produto.categoria.nomeCategoria}"></td>
+                                <td class="actions-cell">
+                                    <a class="btn btn-outline btn-sm" th:href="@{/produtos/editar/{id}(id=${produto.idProduto})}">Editar</a>
+                                    <a class="btn btn-danger-outline btn-sm" th:href="@{/produtos/excluir/{id}(id=${produto.idProduto})}">Excluir</a>
+                                </td>
+                            </tr>
+                            <tr th:if="${#lists.isEmpty(produtos)}">
+                                <td colspan="8" class="empty-state">Nenhum produto cadastrado ainda.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

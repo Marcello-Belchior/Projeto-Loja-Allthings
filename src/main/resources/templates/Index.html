@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto ALL things</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+    <div class="app-layout">
+        <div th:replace="~{fragments/sidebar :: sidebar(activePage='dashboard')}"></div>
+
+        <main class="content">
+            <div class="page-header">
+                <div>
+                    <h1>Dashboard</h1>
+                    <p class="page-subtitle">Bem-vindo ao Sistema All Things. Escolha uma área para gerenciar.</p>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <a class="dashboard-card" href="/produtos/listar">
+                    <span class="card-icon">P</span>
+                    <h3>Produtos</h3>
+                    <p>Cadastrar, editar e listar produtos.</p>
+                </a>
+                <a class="dashboard-card" href="/categorias/listar">
+                    <span class="card-icon">C</span>
+                    <h3>Categorias</h3>
+                    <p>Organizar os produtos por categoria.</p>
+                </a>
+                <a class="dashboard-card" href="/fornecedores/listar">
+                    <span class="card-icon">F</span>
+                    <h3>Fornecedores</h3>
+                    <p>Gerenciar os fornecedores cadastrados.</p>
+                </a>
+                <a class="dashboard-card" href="/clientes/listar">
+                    <span class="card-icon">Cl</span>
+                    <h3>Clientes</h3>
+                    <p>Consultar e cadastrar clientes.</p>
+                </a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

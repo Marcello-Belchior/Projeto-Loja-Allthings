@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem de Fornecedores</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+    <div class="app-layout">
+        <div th:replace="~{fragments/sidebar :: sidebar(activePage='fornecedores')}"></div>
+
+        <main class="content">
+            <div class="page-header">
+                <div>
+                    <h1>Fornecedores</h1>
+                    <p class="page-subtitle">Lista de fornecedores cadastrados</p>
+                </div>
+                <a class="btn btn-primary" href="/fornecedores/criar">+ Novo Fornecedor</a>
+            </div>
+
+            <div class="card">
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Endereço</th>
+                                <th>Cidade</th>
+                                <th>Estado</th>
+                                <th>CEP</th>
+                                <th>CNPJ</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="fornecedor : ${fornecedores}">
+                                <td th:text="${fornecedor.nomeFornecedor}"></td>
+                                <td th:text="${fornecedor.enderecoFornecedor}"></td>
+                                <td th:text="${fornecedor.cidadeFornecedor}"></td>
+                                <td th:text="${fornecedor.estadoFornecedor}"></td>
+                                <td th:text="${fornecedor.cepFornecedor}"></td>
+                                <td th:text="${fornecedor.cnpjFornecedor}"></td>
+                                <td class="actions-cell">
+                                    <a class="btn btn-outline btn-sm" th:href="@{/fornecedores/editar/{id}(id=${fornecedor.idFornecedor})}">Editar</a>
+                                    <a class="btn btn-danger-outline btn-sm" th:href="@{/fornecedores/excluir/{id}(id=${fornecedor.idFornecedor})}">Excluir</a>
+                                </td>
+                            </tr>
+                            <tr th:if="${#lists.isEmpty(fornecedores)}">
+                                <td colspan="7" class="empty-state">Nenhum fornecedor cadastrado ainda.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

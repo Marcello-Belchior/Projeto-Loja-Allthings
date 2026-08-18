@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Clientes</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+    <div class="app-layout">
+        <div th:replace="~{fragments/sidebar :: sidebar(activePage='clientes')}"></div>
+
+        <main class="content">
+            <div class="page-header">
+                <div>
+                    <h1>Cadastro de Clientes</h1>
+                    <p class="page-subtitle">Preencha os dados do cliente</p>
+                </div>
+            </div>
+
+            <div class="card form-card">
+                <div class="card-body">
+                    <form th:action="@{/clientes/salvar}" th:object="${cliente}" method="post">
+
+                        <input type="hidden" th:field="*{idCliente}">
+
+                        <div class="form-group">
+                            <label for="nomeCliente">Nome</label>
+                            <input type="text" id="nomeCliente" th:field="*{nomeCliente}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="enderecoCliente">Endereço</label>
+                            <input type="text" id="enderecoCliente" th:field="*{enderecoCliente}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cidadeCliente">Cidade</label>
+                            <input type="text" id="cidadeCliente" th:field="*{cidadeCliente}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="estadoCliente">Estado</label>
+                            <input type="text" id="estadoCliente" th:field="*{estadoCliente}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cepCliente">CEP</label>
+                            <input type="text" id="cepCliente" th:field="*{cepCliente}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cpfCliente">CPF</label>
+                            <input type="text" id="cpfCliente" th:field="*{cpfCliente}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rgCliente">RG</label>
+                            <input type="text" id="rgCliente" th:field="*{rgCliente}" required>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Salvar Cliente</button>
+                            <a class="btn btn-outline" href="/clientes/listar">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem de Clientes</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+    <div class="app-layout">
+        <div th:replace="~{fragments/sidebar :: sidebar(activePage='clientes')}"></div>
+
+        <main class="content">
+            <div class="page-header">
+                <div>
+                    <h1>Clientes</h1>
+                    <p class="page-subtitle">Lista de clientes cadastrados</p>
+                </div>
+                <a class="btn btn-primary" href="/clientes/criar">+ Novo Cliente</a>
+            </div>
+
+            <div class="card">
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Endereço</th>
+                                <th>Cidade</th>
+                                <th>Estado</th>
+                                <th>CEP</th>
+                                <th>CPF</th>
+                                <th>RG</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="cliente : ${clientes}">
+                                <td th:text="${cliente.nomeCliente}"></td>
+                                <td th:text="${cliente.enderecoCliente}"></td>
+                                <td th:text="${cliente.cidadeCliente}"></td>
+                                <td th:text="${cliente.estadoCliente}"></td>
+                                <td th:text="${cliente.cepCliente}"></td>
+                                <td th:text="${cliente.cpfCliente}"></td>
+                                <td th:text="${cliente.rgCliente}"></td>
+                                <td class="actions-cell">
+                                    <a class="btn btn-outline btn-sm" th:href="@{/clientes/editar/{id}(id=${cliente.idCliente})}">Editar</a>
+                                    <a class="btn btn-danger-outline btn-sm" th:href="@{/clientes/excluir/{id}(id=${cliente.idCliente})}">Excluir</a>
+                                </td>
+                            </tr>
+                            <tr th:if="${#lists.isEmpty(clientes)}">
+                                <td colspan="8" class="empty-state">Nenhum cliente cadastrado ainda.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

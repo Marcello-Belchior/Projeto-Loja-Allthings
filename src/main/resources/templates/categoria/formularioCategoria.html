@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Categorias</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+    <div class="app-layout">
+        <div th:replace="~{fragments/sidebar :: sidebar(activePage='categorias')}"></div>
+
+        <main class="content">
+            <div class="page-header">
+                <div>
+                    <h1>Cadastro de Categorias</h1>
+                    <p class="page-subtitle">Preencha os dados da categoria</p>
+                </div>
+            </div>
+
+            <div class="card form-card">
+                <div class="card-body">
+                    <form th:action="@{/categorias/salvar}" method="post" th:object="${categoria}">
+
+                        <input type="hidden" name="idCategoria" th:field="*{idCategoria}">
+
+                        <div class="form-group">
+                            <label for="nomeCategoria">Nome</label>
+                            <input type="text" id="nomeCategoria" name="nomeCategoria" th:field="*{nomeCategoria}">
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Salvar Categoria</button>
+                            <a class="btn btn-outline" href="/categorias/listar">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

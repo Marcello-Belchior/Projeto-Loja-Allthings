@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem de Categorias</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+    <div class="app-layout">
+        <div th:replace="~{fragments/sidebar :: sidebar(activePage='categorias')}"></div>
+
+        <main class="content">
+            <div class="page-header">
+                <div>
+                    <h1>Categorias</h1>
+                    <p class="page-subtitle">Lista de categorias cadastradas</p>
+                </div>
+                <a class="btn btn-primary" href="/categorias/criar">+ Nova Categoria</a>
+            </div>
+
+            <div class="card">
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="categoria : ${categorias}">
+                                <td th:text="${categoria.nomeCategoria}"></td>
+                                <td class="actions-cell">
+                                    <a class="btn btn-outline btn-sm" th:href="@{/categorias/editar/{id}(id=${categoria.idCategoria})}">Editar</a>
+                                    <a class="btn btn-danger-outline btn-sm" th:href="@{/categorias/excluir/{id}(id=${categoria.idCategoria})}">Excluir</a>
+                                </td>
+                            </tr>
+                            <tr th:if="${#lists.isEmpty(categorias)}">
+                                <td colspan="2" class="empty-state">Nenhuma categoria cadastrada ainda.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
