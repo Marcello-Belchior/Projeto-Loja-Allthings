@@ -1,4 +1,5 @@
 package br.com.allthings.allthings.entity;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,15 +15,26 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Pedido {
-    
+public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer idPedido;
+    private Integer idUsuario;
 
     @Column(nullable = false, length = 40)
-    private String nomePedido;
+    private String nomeUsuario;
 
     @Column(nullable = false, length = 40)
-    private String descPedido;
+    private String loginUsuario;
+
+    @Column(nullable = false, length = 40)
+    private String senhaUsuario;
+
+    @Column(nullable = false, length = 10)
+    private String cpfUsuario;
+
+    @Column(nullable = false, length = 40)
+    private double emailUsuario;
+
+    @Column(nullable = false, length = 40)
+    private String roleUsuario;
 }
