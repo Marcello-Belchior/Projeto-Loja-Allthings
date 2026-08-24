@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import br.com.allthings.allthings.entity.Cliente;
 import br.com.allthings.allthings.service.ClienteService;
@@ -23,9 +25,21 @@ public class ClienteController {
 
     //  Método para salvar um cliente
     @PostMapping("/salvar")
-    public String salvar(@ModelAttribute Cliente cliente) {
+    public String salvar(@ModelAttribute Cliente cliente,
+        @RequestParam("foto") MultipartFile foto) {
+
+    try{
+        if(!foto.isEmpty()){
+            cliente.setFotoCliente(foto.getBytes());
+            cliente.setTipoFoto(foto.getContentType());
+            
+        }
         clienteService.save(cliente);
-        return "redirect:/clientes/listar";
+    }catch (Exception e){
+        e.printStackTrace();
+    }
+    
+    return "redirect:/clientes/listar";
     }
 
     //  Método para listar todos os produtos 

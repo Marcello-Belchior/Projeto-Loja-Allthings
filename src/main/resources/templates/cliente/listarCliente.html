@@ -31,6 +31,7 @@
                                 <th>CEP</th>
                                 <th>CPF</th>
                                 <th>RG</th>
+                                <th>Foto</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
@@ -43,6 +44,11 @@
                                 <td th:text="${cliente.cepCliente}"></td>
                                 <td th:text="${cliente.cpfCliente}"></td>
                                 <td th:text="${cliente.rgCliente}"></td>
+                                <td>
+                                    <img th:if="${cliente.fotoCliente != null!}"
+                                    th:src="@{/clientes/foto/{id}(id=${cliente.idCliente})}"
+                                    width="70" height="80">
+                                </td>
                                 <td class="actions-cell">
                                     <a class="btn btn-outline btn-sm" th:href="@{/clientes/editar/{id}(id=${cliente.idCliente})}">Editar</a>
                                     <a class="btn btn-danger-outline btn-sm" th:href="@{/clientes/excluir/{id}(id=${cliente.idCliente})}">Excluir</a>
