@@ -3,6 +3,8 @@ package br.com.allthings.allthings.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,14 +35,32 @@ public class ClienteController {
             cliente.setFotoCliente(foto.getBytes());
             cliente.setTipoFoto(foto.getContentType());
             
+        }else if(cliente.getIdCliente() != null){
+            Cliente clienteExistente = clienteService.findById(cliente.getIdCliente());
+            if(clienteExistente != null){
+                cliente.setFotoCliente(clienteExistente.getFotoCliente());
+                cliente.setTipoFoto(clienteExistente.getTipoFoto());
+            }
         }
         clienteService.save(cliente);
     }catch (Exception e){
         e.printStackTrace();
     }
-    
+
     return "redirect:/clientes/listar";
     }
+
+    @GetMapping("/foto/{id}")
+    public ResponseEntity<byte[]> foto(@PathVariable Integer id){
+
+        Cliente cliente = clienteService.findById(id);
+        if (cliente == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok()
+            .contentType(MediaType.parseMediaType(cliente.getTipoFoto()))
+            .body(cliente.getFotoCliente());
+    } 
 
     //  Método para listar todos os produtos 
     @GetMapping("/listar") 

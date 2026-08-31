@@ -45,7 +45,7 @@
                                 <td th:text="${cliente.cpfCliente}"></td>
                                 <td th:text="${cliente.rgCliente}"></td>
                                 <td>
-                                    <img th:if="${cliente.fotoCliente != null!}"
+                                    <img th:if="${cliente.fotoCliente != null}"
                                     th:src="@{/clientes/foto/{id}(id=${cliente.idCliente})}"
                                     width="70" height="80">
                                 </td>
