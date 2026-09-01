@@ -26,15 +26,11 @@ public class Usuario {
     @Column(nullable = false, length = 40)
     private String loginUsuario;
 
-    @Column(nullable = false, length = 40)
+    @Column(nullable = false, length = 150)
     private String senhaUsuario;
-
-    @Column(nullable = false, length = 10)
-    private String cpfUsuario;
 
     @Column(nullable = false, length = 40)
     private double emailUsuario;
 
-    @Column(nullable = false, length = 40)
-    private String roleUsuario;
+    private String role ="ROLE_USER";
 }
